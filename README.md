@@ -1,0 +1,2 @@
+# EquationsSolver
+School Project
