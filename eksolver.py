@@ -619,15 +619,6 @@ class Ui_MainWindow(object):
             except:
                     self.label.setText("Input Gabim")
 
-            if('^2' in text):
-                    a = ek2.parse_eq(text)[0]
-                    b = ek2.parse_eq(text)[1]
-                    c = ek2.parse_eq(text)[2]
-                    self.label.setText(ek2.roots_of_equation(a,b,c))
-            else:
-                    ans = eval(text)
-                    self.label.setText(str(ans))
-
 
     def method_del(self):
             text = self.label.text()
