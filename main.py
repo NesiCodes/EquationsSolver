@@ -19,6 +19,9 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
 
     # strip all whitespaces
     eq = ''.join(char for char in eq if char != ' ')
+    eq = eq.replace("=", "")
+    eq = eq.replace("0", "")
+    print(eq)
 
     # match the parameters
     square = re.findall(r'([+-]*\d*)x\^', eq)
@@ -89,10 +92,13 @@ def roots_of_equation(a, b, c):
         print(- b / (2 * a), " - i", sqrt_D)
 
 
-equation = input("Jepni funksionin: ")
-a = parse_eq(equation)[0]
-b = parse_eq(equation)[1]
-c = parse_eq(equation)[2]
 
-roots_of_equation(a,b,c)
+
+if __name__ == "__main__":
+    equation = input("Jepni funksionin: ")
+    a = parse_eq(equation)[0]
+    b = parse_eq(equation)[1]
+    c = parse_eq(equation)[2]
+
+    roots_of_equation(a, b, c)
 

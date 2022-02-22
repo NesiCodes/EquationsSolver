@@ -620,13 +620,12 @@ class Ui_MainWindow(object):
                             b = ek2.parse_eq(text)[1]
                             c = ek2.parse_eq(text)[2]
 
-
                             self.label.setText(ek2.roots_of_equation(a, b, c))
                     else:
                             ans = eval(text)
                             self.label.setText(str(ans))
             except:
-                    self.label.setText("Wrong Input")
+                    self.label.setText("Input Gabim")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
