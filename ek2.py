@@ -100,10 +100,3 @@ def roots_of_equation(a, b, c):
         # print(- b / (2 * a), " - i", sqrt_D)
 
 
-# equation = input("Jepni funksionin: ")
-# a = parse_eq(equation)[0]
-# b = parse_eq(equation)[1]
-# c = parse_eq(equation)[2]
-#
-# roots_of_equation(a,b,c)
-
