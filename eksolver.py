@@ -611,12 +611,17 @@ class Ui_MainWindow(object):
                             a = ek2.parse_eq(text)[0]
                             b = ek2.parse_eq(text)[1]
                             c = ek2.parse_eq(text)[2]
+<<<<<<<< HEAD:eksolver.py
+========
+
+>>>>>>>> origin/master:calculator3.py
                             self.label.setText(ek2.roots_of_equation(a, b, c))
                     else:
                             ans = eval(text)
                             self.label.setText(str(ans))
             except:
                     self.label.setText("Input Gabim")
+<<<<<<<< HEAD:eksolver.py
 
 
 
@@ -624,6 +629,8 @@ class Ui_MainWindow(object):
             text = self.label.text()
             self.label.setText(text[:len(text) - 1])
 
+========
+>>>>>>>> origin/master:calculator3.py
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
