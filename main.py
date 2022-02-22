@@ -17,24 +17,31 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
             missing parameters are substituted with 0
     """
 
-    # strip all whitespaces
+    # strip all whitespaces and = 0 (not necessary)
     eq = ''.join(char for char in eq if char != ' ')
     eq = eq.replace("=", "")
     eq = eq.replace("0", "")
-    print(eq)
 
     # match the parameters
     square = re.findall(r'([+-]*\d*)x\^', eq)
     linear = re.findall(r'([+-]*\d*)x(?!\^)', eq)
-    offset = re.findall(r'[^\^]([+-]*\d+)(?![x}])', eq)
-    new_offset = offset[::-3]
-
-
-
     # parse the parameters
     a = parse_param(square)
     b = parse_param(linear)
-    c = parse_param(new_offset)
+
+    # offset = re.findall(r'[^\^]([+-]*\d+)(?![x}])', eq)
+    # new_offset = offset[::-3]
+    #find c
+    eq = eq.replace(str(a), "")
+    eq = eq.replace(str(b), "")
+    eq = eq.replace("x", "")
+    eq = eq.replace("^", "")
+    eq = eq.replace("-", "")
+    eq = eq.replace("+", "")
+    offset = list(eq)
+
+    #parse c
+    c = parse_param(offset)
 
     return a, b, c
 

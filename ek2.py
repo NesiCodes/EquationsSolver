@@ -17,7 +17,7 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
             missing parameters are substituted with 0
     """
 
-    # strip all whitespaces and remove = and 0(bcs they are not needed)
+    # strip all whitespaces and = 0 (not necessary)
     eq = ''.join(char for char in eq if char != ' ')
     eq = eq.replace("=", "")
     eq = eq.replace("0", "")
@@ -25,17 +25,26 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
     # match the parameters
     square = re.findall(r'([+-]*\d*)x\^', eq)
     linear = re.findall(r'([+-]*\d*)x(?!\^)', eq)
-    offset = re.findall(r'[^\^]([+-]*\d+)(?![x}])', eq)
-    new_offset = offset[::-3]
-
-
-
     # parse the parameters
     a = parse_param(square)
     b = parse_param(linear)
-    c = parse_param(new_offset)
+
+    # offset = re.findall(r'[^\^]([+-]*\d+)(?![x}])', eq)
+    # new_offset = offset[::-3]
+    #find c
+    eq = eq.replace(str(a), "")
+    eq = eq.replace(str(b), "")
+    eq = eq.replace("x", "")
+    eq = eq.replace("^", "")
+    eq = eq.replace("-", "")
+    eq = eq.replace("+", "")
+    offset = list(eq)
+
+    #parse c
+    c = parse_param(offset)
 
     return a, b, c
+
 
 
 def parse_param(repr: typing.Union[list, list[str]]) -> int:
@@ -77,7 +86,7 @@ def roots_of_equation(a, b, c):
     if D > 0:
         x1=(-b + sqrt_D) / (2 * a)
         x2=(-b - sqrt_D) / (2 * a)
-        return f"x1={x1} x2={x2}"
+        return f"D={D} x1={x1} x2={x2}"
         # print("Roots are Real and Different ")
         # print((-b + sqrt_D) / (2 * a))
         # print((-b - sqrt_D) / (2 * a))
@@ -85,16 +94,17 @@ def roots_of_equation(a, b, c):
 
     elif D == 0:
         x=-b / (2 * a)
-        return f"x={x}"
+        return f"D={D} x={x}"
         # print(" real and same roots")
         # print(-b / (2 * a))
 
         # Discriminant < 0 follows else block
 
     else:
-        x1=- b / (2 * a), " + i", sqrt_D
-        x2=- b / (2 * a), " - i", sqrt_D
-        return f"Complex x1={x1} x2={x2}"
+        return "D<0 Nuk ka rrenje reale"
+        # x1=- b / (2 * a), " + i", sqrt_D
+        # x2=- b / (2 * a), " - i", sqrt_D
+        # return f"Complex x1={x1} x2={x2}"
         # print("Complex Roots")
         # print(- b / (2 * a), " + i", sqrt_D)
         # print(- b / (2 * a), " - i", sqrt_D)
