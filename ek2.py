@@ -17,8 +17,10 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
             missing parameters are substituted with 0
     """
 
-    # strip all whitespaces
+    # strip all whitespaces and remove = and 0(bcs they are not needed)
     eq = ''.join(char for char in eq if char != ' ')
+    eq = eq.replace("=", "")
+    eq = eq.replace("0", "")
 
     # match the parameters
     square = re.findall(r'([+-]*\d*)x\^', eq)
@@ -67,7 +69,7 @@ def roots_of_equation(a, b, c):
     print(c)
     # Finding the value of Discriminant
     D = b**2 - 4*a*c
-    print(D)
+    # print(D)
 
     sqrt_D = math.sqrt(abs(D))
 
