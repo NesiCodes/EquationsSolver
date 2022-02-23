@@ -32,13 +32,14 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
     # offset = re.findall(r'[^\^]([+-]*\d+)(?![x}])', eq)
     # new_offset = offset[::-3]
     #find c
-    eq = eq.replace(str(a), "")
-    eq = eq.replace(str(b), "")
+    eq = eq.replace(str(a), "", 1)
+    eq = eq.replace(str(b), "", 1)
     eq = eq.replace("x", "")
     eq = eq.replace("^", "")
     eq = eq.replace("-", "")
     eq = eq.replace("+", "")
     offset = list(eq)
+    print(offset)
 
     #parse c
     c = parse_param(offset)
