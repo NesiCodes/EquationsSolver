@@ -17,7 +17,7 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
             missing parameters are substituted with 0
     """
 
-    # strip all whitespaces and = 0 (not necessary)
+    # strip all whitespaces and =0 (bcs not necessary)
     eq = ''.join(char for char in eq if char != ' ')
     eq = eq.replace("=", "")
     eq = eq.replace("0", "")
@@ -69,6 +69,12 @@ def parse_param(repr: typing.Union[list, list[str]]) -> int:
         return int(repr[0])
 
 
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
 
 # Finding the roots using the Function
 def roots_of_equation(a, b, c):
@@ -77,7 +83,6 @@ def roots_of_equation(a, b, c):
     print(c)
     # Finding the value of Discriminant
     D = b**2 - 4*a*c
-    print(D)
 
     sqrt_D = math.sqrt(abs(D))
 
@@ -102,10 +107,12 @@ def roots_of_equation(a, b, c):
 
 
 if __name__ == "__main__":
-    equation = input("Jepni funksionin: ")
-    a = parse_eq(equation)[0]
-    b = parse_eq(equation)[1]
-    c = parse_eq(equation)[2]
+    while (True):
+        equation = input("Jepni funksionin: ")
+        a = parse_eq(equation)[0]
+        b = parse_eq(equation)[1]
+        c = parse_eq(equation)[2]
 
-    roots_of_equation(a, b, c)
+        print(roots_of_equation(a, b, c))
+
 
