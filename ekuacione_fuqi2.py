@@ -2,18 +2,20 @@ import re
 import typing
 import math
 
+import grafiket_fuqi2
+import shiko_zgjidhjen
+
 
 def parse_eq(eq: str) -> tuple[float, float, float]:
-    """parse a quadratic equation and return the parameters
+    """mer nje ekuacion nga perdoruesi dhe rikthen vlerat a,b,c
     Parameters
     ----------
         eq: string
-            the quadratic equation to parse
+            ekuacioni nga perdoruesi
     Returns
     -------
-        triple of integer
-            the parameters in descending order of power of x
-            missing parameters are substituted with 0
+        vlerat a,b,c ne float
+        vlerat boshe zevendesohen me 0
     """
 
     # strip all whitespaces and = 0 (not necessary)
@@ -38,6 +40,7 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
         print()
     elif(str(a) == "-1"):
         print()
+        eq = eq.replace("-", "", 1)
     else:
         eq = eq.replace(str(a), "", 1)
 
@@ -45,6 +48,7 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
         print()
     elif (str(b) == "-1"):
         print()
+        eq = eq.replace("-", "", 1)
     else:
         eq = eq.replace(str(b), "", 1)
     # eq = eq.replace("-", "")
@@ -63,16 +67,15 @@ def parse_eq(eq: str) -> tuple[float, float, float]:
 
 
 def parse_param(repr: typing.Union[list, list[str]]) -> int:
-    """helper function to parse a single parameter
+    """funksion ndihmes per te kontrolluar secilen nga vlera a,b,c
     Parameters
     ----------
-        repr: optional list of string
-            the regex match from the parent function
+        repr: list of string vlera e  kthyer nga regex
 
     Returns
     -------
         integer
-            the parsed parameter
+            vlera e dhene e rikthyer mbas kontrollit
     """
     if not repr:
         return 0
@@ -139,6 +142,7 @@ def roots_of_equation(a, b, c):
         # print(- b / (2 * a), " - i", sqrt_D)
 
 
+
 if __name__ == "__main__":
     while(True):
         equation = input("Jepni funksionin: ")
@@ -147,6 +151,7 @@ if __name__ == "__main__":
         c = parse_eq(equation)[2]
 
         print(roots_of_equation(a, b, c))
+        shiko_zgjidhjen.shikoZgjidhjen(equation)
 
 
 

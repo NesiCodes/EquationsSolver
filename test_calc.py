@@ -1,5 +1,7 @@
 import unittest
-import ek2
+import ekuacione_fuqi2
+import grafiket_fuqi2
+
 
 class TestEk2(unittest.TestCase):
 
@@ -230,6 +232,14 @@ class TestEk2(unittest.TestCase):
         c = ek2.parse_eq(equation)[2]
         result = ek2.roots_of_equation(a, b, c)
         self.assertEqual(result, "D=2916 x1=-9.0 x2=9.0")
+
+    def test_12(self):
+        equation = "-x^2"
+        a = ek2.parse_eq(equation)[0]
+        b = ek2.parse_eq(equation)[1]
+        c = ek2.parse_eq(equation)[2]
+        result = ek2.roots_of_equation(a, b, c)
+        self.assertEqual(result, "D=0 x=-0.0")
 
 
 if __name__ == '__main__':
